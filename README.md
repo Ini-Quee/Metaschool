@@ -1,59 +1,52 @@
-// SPDX-License-Identifier: LGPL-3.0-or-later
-pragma solidity ^0.8.19;
+# MetaSchool Developer Journey
 
-import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
-import {IDAOResource} from "@q-dev/gdk-contracts/interfaces/IDAOResource.sol";
-import {ACampaignAirDrop} from "./libs/ACampaignAirDrop.sol";
+Welcome to my developer diary documenting my journey at MetaSchool! 🚀 This repository serves as a record of my progress, experiences, projects, and learnings throughout my time as a developer at MetaSchool.
 
-// AirDropV2 Contract
-contract AirDropV2 is ACampaignAirDrop, Initializable, IDAOResource {
-    // Resource name for the AirDropV2 module
-    string public constant AIR_DROP_V2_RESOURCE = "AIR_DROP_V2";
+## Overview
 
-    // Address of the voting contract
-    address public votingContract;
+This repository is a collection of:
 
-    // Modifier to restrict access to functions only to the voting contract
-    modifier onlyVotingContract() {
-        require(msg.sender == votingContract, "AirDropV2: caller is not the voting contract.");
-        _;
-    }
+- **Projects:** Check out the projects I've worked on during my tenure at MetaSchool.
+- **Learnings:** Find resources, articles, and tutorials I've used to enhance my skills.
+- **Challenges:** Explore the obstacles I've faced and how I overcame them.
+- **Reflections:** Read about my thoughts, insights, and personal growth as a developer.
 
-    // Constructor to set the voting contract address during deployment
-    function __AirDropV2_init(address votingContract_) public initializer {
-        votingContract = votingContract_;
-    }
+## Contents
 
-    // Create a new token distribution campaign (can be called only by voting contract)
-    function createCampaign(
-        address rewardToken_,
-        uint256 rewardAmount_,
-        bytes32 merkleRoot_,
-        uint256 startTimestamp_,
-        uint256 endTimestamp_
-    ) external onlyVotingContract returns (uint256) {
-        return _createCampaign(rewardToken_, rewardAmount_, startTimestamp_, endTimestamp_, merkleRoot_);
-    }
+### Projects
 
-    // Claim rewards from a specific campaign
-    function claimReward(
-        uint256 campaignId_,
-        address account_,
-        bytes32[] calldata merkleProof_
-    ) external {
-        _claimReward(campaignId_, account_, merkleProof_);
-    }
+- [Project 1: Name](link)
+- [Project 2: Name](link)
+- [Project 3: Name](link)
 
-    // Check permission function from the IDAOResource interface (always returns true for simplicity)
-    function checkPermission(
-        address /*member_*/,
-        string calldata /*permission_*/
-    ) external pure returns (bool) {
-        return true;
-    }
+### Learnings
 
-    // Get the resource name associated with this contract (IDAOResource interface)
-    function getResource() external pure returns (string memory) {
-        return AIR_DROP_V2_RESOURCE;
-    }
-}
+- [Resource 1: Name](link)
+- [Resource 2: Name](link)
+- [Resource 3: Name](link)
+
+### Challenges
+
+- [Challenge 1: Description](link)
+- [Challenge 2: Description](link)
+- [Challenge 3: Description](link)
+
+### Reflections
+
+- [Month/Year: Reflection Title](link)
+- [Month/Year: Reflection Title](link)
+- [Month/Year: Reflection Title](link)
+
+## Contributing
+
+Feel free to explore my journey and the resources shared here. If you have any feedback, suggestions, or want to contribute to my developer diary, please don't hesitate to [[reach out to me](https://www.linkedin.com/in/erica-innocent-542147265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app).
+
+## Acknowledgments
+
+I'd like to express my gratitude to the MetaSchool community, mentors, and colleagues for their support and guidance throughout this journey.
+
+## License
+
+This repository and its contents are open-source under the [LICENSE](link-to-license) license.
+
+Happy coding! ✨
